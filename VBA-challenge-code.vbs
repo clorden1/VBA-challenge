@@ -53,12 +53,12 @@ For i = 2 To lastRow
         volume = volume + Cells(i, 7).Value
     ElseIf Cells(i + 1, 1).Value <> Cells(i, 1).Value Then
         Cells(outputRow, 9) = Cells(i, 1).Value
-        Cells(outputRow, 10) = (op - Cells(i, 6).Value)
+        Cells(outputRow, 10) = -(op - Cells(i, 6).Value) 'Added a negative sign to correct yearly change results
             If Cells(outputRow, 10) > 0 Then
                 Cells(outputRow, 10).Interior.ColorIndex = 4
             Else: Cells(outputRow, 10).Interior.ColorIndex = 3
             End If
-        Cells(outputRow, 11).Value = (op - Cells(i, 6).Value) / op
+        Cells(outputRow, 11).Value = -((op - Cells(i, 6).Value) / op) ' Added a negative sign to correct percent change results
         Cells(outputRow, 11).NumberFormat = "0.00%" 'Reference #1
         op = Cells(i + 1, 3)
         volume = volume + Cells(i, 7).Value
